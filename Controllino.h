@@ -781,21 +781,16 @@
   
   #define CONTROLLINO_UART_RX 17
   
-  #define CONTROLLINO_PIN_HEADER_DIGITAL_IN_16 38
-  #define CONTROLLINO_SCREW_TERMINAL_DIGITAL_IN_16 38
-
-  #define CONTROLLINO_PIN_HEADER_DIGITAL_IN_17 39
-  #define CONTROLLINO_SCREW_TERMINAL_DIGITAL_IN_17 39
-
-  #define CONTROLLINO_PIN_HEADER_DIGITAL_IN_18 40
-  #define CONTROLLINO_SCREW_TERMINAL_DIGITAL_IN_18 40
-
+  #define CONTROLLINO_PIN_HEADER_DIGITAL_IN_16 18
   #define CONTROLLINO_PIN_HEADER_INT_00 18
+  #define CONTROLLINO_SCREW_TERMINAL_DIGITAL_IN_16 18
   #define CONTROLLINO_SCREW_TERMINAL_INT_00 18
-
+  
+  #define CONTROLLINO_PIN_HEADER_DIGITAL_IN_17 19
   #define CONTROLLINO_PIN_HEADER_INT_01 19
+  #define CONTROLLINO_SCREW_TERMINAL_DIGITAL_IN_17 19
   #define CONTROLLINO_SCREW_TERMINAL_INT_01 19
-
+  
   #define CONTROLLINO_PIN_HEADER_SDA 20
   #define CONTROLLINO_PIN_HEADER_DIGITAL_OUT_25 20
   
@@ -1131,8 +1126,13 @@ char Controllino_SetRTCSS(char mode);
  *  See http://www.microcrystal.com/images/_Product-Documentation/02_Oscillator_&_RTC_Modules/02_Application_Manual/RV-2123-C2_App-Manual.pdf
  *  for more information.
  *
+ *  @param aDay pointer to day 01 - 31
+ *  @param aWeekDay pointer to weekday 00 - 06
+ *  @param aMonth pointer to month 01 - 12
+ *  @param aYear pointer to year 00 - 99
  *  @param aHour pointer to hours 01 - 12, or 00 - 23 (depending of 12H/24H mode)
  *  @param aMinute pointer to minutes 00 - 59
+ *  @param aSecond pointer to seconds 00 - 59
  *  
  *  @return Returns 0 when succeeded, or -1 if the RTC library was not initialized before
  */
@@ -1141,7 +1141,7 @@ char Controllino_SetAlarm(unsigned char *aHour, unsigned char *aMinute);
 
 /** @brief Clears alarm interrupt on the RTC chip (RV-2123)
  *
- *  @return Returns 0 when succeeded, or -1 if the RTC library was not initialized before
+ *  @return Returns seconds 0, or -1 if the RTC library was not initialized before
  */
 char Controllino_ClearAlarm( void );
 
